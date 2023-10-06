@@ -12,7 +12,6 @@ function showSalary(users, age) {
     }
       
   }
-  console.log(result);
   return result;
 }
 
