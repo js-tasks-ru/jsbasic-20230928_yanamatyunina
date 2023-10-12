@@ -4,8 +4,7 @@ function highlight(table) {
     if(table.rows[i].cells[3].dataset.available=='true') {
       table.rows[i].classList.add('available');
     } else if(table.rows[i].cells[3].dataset.available==undefined) {
-      table.rows[i].classList.add('hidden');
-      table.rows[i].setAttribute('hidden', true)
+      table.rows[i].hidden = true;
     } else if(table.rows[i].cells[3].dataset.available=='false'){
       table.rows[i].classList.add('unavailable');
     }
