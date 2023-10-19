@@ -8,11 +8,22 @@ function initCarousel() {
   let left_arrow = document.querySelector(".carousel__arrow_left");
   let img = document.querySelector(".carousel__img");
   let carousel = document.querySelector(".carousel__inner");
+  let carousel_holder = document.querySelector('[data-carousel-holder]');
 
   update_buttons();
   
-  right_arrow.addEventListener("click", handler_right); 
-  left_arrow.addEventListener("click", handler_left); 
+  carousel_holder.onclick = ({target}) => {
+    if (target.closest('.carousel__arrow_right')) {
+      handler_right();
+    }
+
+    if (target.closest('.carousel__arrow_left')) {
+      handler_left();
+    }
+  };
+
+  //right_arrow.addEventListener("click", handler_right); 
+  //left_arrow.addEventListener("click", handler_left); 
   
   function handler_right() {
     translate += img.offsetWidth;
