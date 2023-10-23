@@ -1,5 +1,4 @@
 function initCarousel() {
-
   let count = 1;
   let translate = 0;
   let n=4;
@@ -51,5 +50,6 @@ function initCarousel() {
     } else {
       right_arrow.style.display = '';
     }
+  }
 }
-}
+
