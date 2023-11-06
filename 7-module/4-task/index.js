@@ -18,18 +18,16 @@ export default class StepSlider {
       this.span = createElement(`<span></span>`);
       this.elem.querySelector(".slider__steps").append(this.span);
     }
-
-    const firstStep = this.elem
-      .querySelector(".slider__steps")
-      .querySelector("span");
-    firstStep.classList.add("slider__step-active");
+     
+    this.elem.querySelector(".slider__steps").querySelector("span").classList.add("slider__step-active");
 
     this.elem.ondragstart = (event) => {
       event.preventDefault();
+      this.setValue();
     };
     this.elem.addEventListener("click", this.sliderClick);
     this.elem.addEventListener("pointerdown", this.pointerDown);
-    this.setValue();
+    
   }
 
   sliderClick = (e) => {
@@ -60,7 +58,7 @@ export default class StepSlider {
     document.addEventListener("pointerup", this.pointerUp, {
       once: true,
     });
-    this.setValue();
+  
   }
 
   pointerMove = (e) => {
@@ -101,7 +99,9 @@ export default class StepSlider {
     if (this.elem.querySelector('.slider__step-active')) {
       this.elem.querySelector('.slider__step-active').classList.remove('slider__step-active');
     }
-    this.elem.querySelector('.slider__steps').children[this.value].classList.add('slider__step-active');
+    if(console.log(this.elem.querySelector('.slider__steps').children[this.value])) {
+      this.elem.querySelector('.slider__steps').children[this.value].classList.add('slider__step-active');
+    }
 
     thumb.style.left = `${(this.value / this.segments) * 100}%`;
     progress.style.width = `${(this.value / this.segments) * 100}%`;
